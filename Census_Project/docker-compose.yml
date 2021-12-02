@@ -1,0 +1,41 @@
+version: '3' #tells docker-compose which version of YAML specification to use
+services: #will be followed by a list of all the services to run
+    web: #service
+        image: nginx:latest #official NGINX image
+        ports: #sets up port forwarding. 
+            - "80:80" #It forwards 80 on the local machine to 80 in image
+        volumes: #makes nginx.conf and app directory available in container. any changes to these files are reflected in container
+            - ./nginx.conf:/etc/nginx/conf.d/nginx.conf #where NGINX reads configuration files from
+            - ./app:/app #PHP scripts, images, JavaScript files    
+    php:
+        #image: php:fpm #FastCGI Process Manager
+        build:
+            context: . #folder that configuration file is in
+            dockerfile: PHP.Dockerfile #name of file used to build image
+        volumes: #volume - a file or folder on your computer which is shared with the container
+            - ./app:/app
+    python3:
+        build:
+            context: .
+            dockerfile: PYTHON.Dockerfile
+        volumes: 
+            - ./app:/app
+    
+    #javascript:
+    #    image: node:latest
+    #    volumes:
+    #        -./app:/app
+        
+    mysql:
+        image: mariadb:latest
+        environment: #used to pass some variables to the container when it's created
+            MYSQL_ROOT_PASSWORD: 'cerealbawx' #used to log in as root and manage database
+            MYSQL_USER: 'group_X' #user with limited permissions; PHP scripts
+            MYSQL_PASSWORD: 'cerealbawx' #user pw
+            MYSQL_DATABASE: 'income_poverty' #name of a schema that user defined has access to
+        volumes:
+            - mysqldata:/var/lib/mysql
+        ports:
+            - 3306:3306 #exposes port so connect with a client such as MySQL workbench
+volumes: #not mapped to the local filesystme this is where the data for MySQL is stored tables, records, etc
+    mysqldata: {}

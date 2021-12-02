@@ -1,0 +1,6 @@
+key_id,id,Geographic Area Name,HouseholdsTotal,HouseholdsMedian income (dollars),HouseholdsMean income (dollars),FamiliesTotal,FamiliesMedian income (dollars),FamiliesMean income (dollars),Married-couple familiesTotal,Married-couple familiesMedian income (dollars),Married-couple familiesMean income (dollars),Nonfamily householdsTotal,Nonfamily householdsMedian income (dollars),Nonfamily householdsMean income (dollars)
+0,0100000US,United States,122802852,65712,92324,79594270,80944,108587,58370842,96571,126166,43208582,39871,58110
+1,0200000US1,Northeast Region,21665126,73145,104741,13752498,91859,125162,9993919,110252,146196,7912628,42597,64664
+2,0200000US2,Midwest Region,27105831,62198,84323,17003989,79798,102049,12744312,93634,117603,10101842,37049,51121
+3,0200000US3,South Region,46381681,60566,84976,30466237,74044,99754,22015614,90089,117201,15915444,36592,53051
+4,0200000US4,West Region,27650214,73953,102763,18371546,86706,116880,13616997,101553,133973,9278668,46641,68810
